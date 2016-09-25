@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <p>There is a study. It is about marine animals. In the world, there are fewer and fewer marine animals. There are 50% less marine animals in the world than in 1970.This is not good news. The situation is getting worse fast. This is a problem for animals.
+  </p>
+
+  <div>There is a study. It is about marine animals. In the world, there are fewer and fewer marine animals. There are 50% less marine animals in the world than in 1970.This is not good news. The situation is getting worse fast. This is a problem for animals.
+  </div>
+
+  <script type="text/javascript">
+    $.fn.trunc = (function(num) {
+      var num = num || 0;
+      var elem = this;
+      var content = elem.html();
+      var partOne = content.substr(0,num);
+      var partTwo = content.substr(num + 1);
+
+      var firstSpan = "<span style='display:none' class='first'>" + partTwo + "</span>";
+
+      var hellip = '\u2026';
+      var curString = elem.html(partOne + firstSpan + hellip);
+      
+      elem.find(".Two").click(function(){
+        elem.find(".One").show();
+        elem.find(".Two").hide();
+      });
+    })
+    $( "p" ).trunc(200);
+    $( "div" ).trunc(150);
+  </script>
+
+</body>
+</html>
